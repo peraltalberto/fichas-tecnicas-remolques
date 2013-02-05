@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
+<hibernate-reverse-engineering>
+  <schema-selection match-catalog="FTR"/>
+  <table-filter match-name="CARROCERIA"/>
+  <table-filter match-name="CATEGORIA"/>
+  <table-filter match-name="CLASIFICACION1"/>
+  <table-filter match-name="CLASIFICACION2"/>
+  <table-filter match-name="COLOR"/>
+  <table-filter match-name="COMBUSTIBLE"/>
+  <table-filter match-name="FICHATECNICA"/>
+  <table-filter match-name="PROCEDENCIA"/>
+</hibernate-reverse-engineering>

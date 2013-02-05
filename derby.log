@@ -1,0 +1,10 @@
+----------------------------------------------------------------
+Tue Feb 05 17:54:37 CET 2013:
+ Arrancando Derby versión The Apache Software Foundation - Apache Derby - 10.8.2.2 - (1181258): instancia a816c00e-013c-ab47-d760-00000379e140 
+en el directorio de base de datos C:\Users\aperalta\Documents\NetBeansProjects\FichasA4\FTR  con el cargador de clases sun.misc.Launcher$AppClassLoader@35a16869
+
+java.vendor=Sun Microsystems Inc.
+java.runtime.version=1.6.0_35-b10
+user.dir=C:\Users\aperalta\Documents\NetBeansProjects\FichasA4
+derby.system.home=null
+Cargador de clases de base de datos iniciado - derby.database.classpath=''

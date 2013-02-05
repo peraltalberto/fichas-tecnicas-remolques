@@ -1,0 +1,198 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 04-feb-2013 16:38:37 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="es.zurixconsulting.fichas_a4.persistencia.pojos.Fichatecnica" table="FICHATECNICA" schema="FTR">
+        <id name="ncertificado" type="string">
+            <column name="NCERTIFICADO" length="7" />
+            <generator class="assigned" />
+        </id>
+        <property name="nbastidor" type="string">
+            <column name="NBASTIDOR" length="20" />
+        </property>
+        <property name="fechatarjeta" type="date">
+            <column name="FECHATARJETA" length="10" />
+        </property>
+        <property name="tipo" type="string">
+            <column name="TIPO" length="1" />
+        </property>
+        <property name="fabricante" type="java.lang.Integer">
+            <column name="FABRICANTE" precision="5" scale="0" />
+        </property>
+        <property name="d1marca" type="string">
+            <column name="D1MARCA" length="50" />
+        </property>
+        <property name="d2tipo" type="string">
+            <column name="D2TIPO" length="50" />
+        </property>
+        <property name="d2variante" type="string">
+            <column name="D2VARIANTE" length="50" />
+        </property>
+        <property name="d2version" type="string">
+            <column name="D2VERSION" length="50" />
+        </property>
+        <property name="d3denom" type="string">
+            <column name="D3DENOM" length="50" />
+        </property>
+        <property name="khomol" type="string">
+            <column name="KHOMOL" length="50" />
+        </property>
+        <property name="khomolc" type="string">
+            <column name="KHOMOLC" length="50" />
+        </property>
+        <property name="rdc" type="string">
+            <column name="RDC" length="50" />
+        </property>
+        <property name="a1" type="string">
+            <column name="A1" length="50" />
+        </property>
+        <property name="a2" type="string">
+            <column name="A2" length="50" />
+        </property>
+        <property name="ciitv" type="string">
+            <column name="CIITV" length="50" />
+        </property>
+        <property name="d6" type="java.lang.Integer">
+            <column name="D6" precision="5" scale="0" />
+        </property>
+        <property name="s1" type="java.lang.Integer">
+            <column name="S1" precision="5" scale="0" />
+        </property>
+        <property name="k" type="string">
+            <column name="K" length="50" />
+        </property>
+        <property name="z" type="string">
+            <column name="Z" length="50" />
+        </property>
+        <property name="observaciones" type="string">
+            <column name="OBSERVACIONES" />
+        </property>
+        <property name="opciones" type="string">
+            <column name="OPCIONES" />
+        </property>
+        <property name="cv" type="string">
+            <column name="CV" length="50" />
+        </property>
+        <property name="lne" type="java.lang.Integer">
+            <column name="LNE" precision="5" scale="0" />
+        </property>
+        <property name="lnr" type="java.lang.Integer">
+            <column name="LNR" precision="5" scale="0" />
+        </property>
+        <property name="l0" type="java.lang.Integer">
+            <column name="L0" precision="5" scale="0" />
+        </property>
+        <property name="l1ne" type="java.lang.Integer">
+            <column name="L1NE" precision="5" scale="0" />
+        </property>
+        <property name="l1pe" type="java.lang.Integer">
+            <column name="L1PE" precision="5" scale="0" />
+        </property>
+        <property name="l2" type="string">
+            <column name="L2" length="50" />
+        </property>
+        <property name="g" type="string">
+            <column name="G" length="50" />
+        </property>
+        <property name="f1" type="string">
+            <column name="F1" length="50" />
+        </property>
+        <property name="f11" type="string">
+            <column name="F11" length="50" />
+        </property>
+        <property name="f15" type="string">
+            <column name="F15" length="50" />
+        </property>
+        <property name="o14" type="string">
+            <column name="O14" length="50" />
+        </property>
+        <property name="o13" type="string">
+            <column name="O13" length="50" />
+        </property>
+        <property name="o12" type="string">
+            <column name="O12" length="50" />
+        </property>
+        <property name="o11" type="string">
+            <column name="O11" length="50" />
+        </property>
+        <property name="o1" type="string">
+            <column name="O1" length="50" />
+        </property>
+        <property name="f3" type="string">
+            <column name="F3" length="50" />
+        </property>
+        <property name="f31" type="string">
+            <column name="F31" length="50" />
+        </property>
+        <property name="m4" type="string">
+            <column name="M4" length="50" />
+        </property>
+        <property name="f4" type="string">
+            <column name="F4" length="50" />
+        </property>
+        <property name="f5" type="string">
+            <column name="F5" length="50" />
+        </property>
+        <property name="f6" type="string">
+            <column name="F6" length="50" />
+        </property>
+        <property name="f7" type="string">
+            <column name="F7" length="50" />
+        </property>
+        <property name="f71" type="string">
+            <column name="F71" length="50" />
+        </property>
+        <property name="f8" type="string">
+            <column name="F8" length="50" />
+        </property>
+        <property name="p51" type="string">
+            <column name="P51" length="50" />
+        </property>
+        <property name="p5" type="string">
+            <column name="P5" length="50" />
+        </property>
+        <property name="p11" type="string">
+            <column name="P11" length="50" />
+        </property>
+        <property name="p1" type="string">
+            <column name="P1" length="50" />
+        </property>
+        <property name="p2" type="string">
+            <column name="P2" length="50" />
+        </property>
+        <property name="p21" type="string">
+            <column name="P21" length="50" />
+        </property>
+        <property name="v9" type="string">
+            <column name="V9" length="50" />
+        </property>
+        <property name="v1" type="string">
+            <column name="V1" length="50" />
+        </property>
+        <property name="v2" type="string">
+            <column name="V2" length="50" />
+        </property>
+        <property name="v7" type="string">
+            <column name="V7" length="50" />
+        </property>
+        <property name="jcateg" type="string">
+            <column name="JCATEG" length="3" />
+        </property>
+        <property name="j1" type="string">
+            <column name="J1" length="2" />
+        </property>
+        <property name="p3" type="string">
+            <column name="P3" length="3" />
+        </property>
+        <property name="r" type="string">
+            <column name="R" length="2" />
+        </property>
+        <property name="cl1" type="string">
+            <column name="CL1" length="2" />
+        </property>
+        <property name="cl2" type="string">
+            <column name="CL2" length="2" />
+        </property>
+    </class>
+</hibernate-mapping>
