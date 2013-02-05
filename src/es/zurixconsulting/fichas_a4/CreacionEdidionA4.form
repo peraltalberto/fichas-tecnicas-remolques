@@ -167,7 +167,7 @@
                                               </Group>
                                               <EmptySpace min="-2" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="jCBox4" min="-2" pref="105" max="-2" attributes="0"/>
+                                                  <Component id="cb_r" min="-2" pref="105" max="-2" attributes="0"/>
                                                   <Component id="jTextField21" min="-2" pref="105" max="-2" attributes="0"/>
                                               </Group>
                                               <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
@@ -180,7 +180,7 @@
                                                   <Group type="102" alignment="0" attributes="0">
                                                       <Component id="jLabel25" min="-2" max="-2" attributes="0"/>
                                                       <EmptySpace max="-2" attributes="0"/>
-                                                      <Component id="jTextField20" min="-2" pref="310" max="-2" attributes="0"/>
+                                                      <Component id="tx_s1" min="-2" pref="310" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
                                           </Group>
@@ -193,13 +193,13 @@
                                               <EmptySpace min="-2" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Group type="102" attributes="0">
-                                                      <Component id="jCBox3" min="-2" pref="171" max="-2" attributes="0"/>
+                                                      <Component id="cb_j1" min="-2" pref="171" max="-2" attributes="0"/>
                                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                                       <Component id="jLabel23" min="-2" pref="121" max="-2" attributes="0"/>
                                                   </Group>
                                                   <Group type="102" attributes="0">
                                                       <Group type="103" groupAlignment="1" attributes="0">
-                                                          <Component id="jCBox1" alignment="1" min="-2" pref="171" max="-2" attributes="0"/>
+                                                          <Component id="cb_cl1" alignment="1" min="-2" pref="171" max="-2" attributes="0"/>
                                                           <Component id="tx_d3" min="-2" pref="171" max="-2" attributes="0"/>
                                                       </Group>
                                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -207,7 +207,7 @@
                                                           <Group type="102" attributes="0">
                                                               <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
                                                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                                              <Component id="jCBox2" min="-2" pref="167" max="-2" attributes="0"/>
+                                                              <Component id="cb_cl2" min="-2" pref="167" max="-2" attributes="0"/>
                                                           </Group>
                                                           <Group type="102" alignment="0" attributes="0">
                                                               <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
@@ -278,7 +278,7 @@
                                                   </Group>
                                               </Group>
                                           </Group>
-                                          <Component id="jCBox5" alignment="1" min="-2" pref="214" max="-2" attributes="0"/>
+                                          <Component id="cb_d6" alignment="1" min="-2" pref="214" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace pref="226" max="32767" attributes="0"/>
                                   </Group>
@@ -356,23 +356,23 @@
                               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel22" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jCBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cb_cl1" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel20" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jCBox2" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cb_cl2" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel21" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jCBox3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cb_j1" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel23" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jCBox5" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cb_d6" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel24" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jCBox4" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cb_r" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel25" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextField20" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
+                                  <Component id="tx_s1" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
@@ -964,7 +964,7 @@
                         <Property name="text" type="java.lang.String" value="(R) Color(solo M1)"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField20">
+                    <Component class="javax.swing.JTextField" name="tx_s1">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="1"/>
@@ -1060,7 +1060,7 @@
                         </Property>
                       </Properties>
                     </Component>
-                    <Component class="es.zurixconsulting.utiles.JCBox" name="jCBox1">
+                    <Component class="es.zurixconsulting.utiles.JCBox" name="cb_cl1">
                       <Properties>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
@@ -1080,7 +1080,7 @@
                         <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new es.zurixconsulting.utiles.JCBox(this.c1Model.getLista())"/>
                       </AuxValues>
                     </Component>
-                    <Component class="es.zurixconsulting.utiles.JCBox" name="jCBox2">
+                    <Component class="es.zurixconsulting.utiles.JCBox" name="cb_cl2">
                       <Properties>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
@@ -1100,7 +1100,7 @@
                         <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new es.zurixconsulting.utiles.JCBox(this.c2Model.getLista())"/>
                       </AuxValues>
                     </Component>
-                    <Component class="es.zurixconsulting.utiles.JCBox" name="jCBox3">
+                    <Component class="es.zurixconsulting.utiles.JCBox" name="cb_j1">
                       <Properties>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
@@ -1120,7 +1120,7 @@
                         <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new es.zurixconsulting.utiles.JCBox(this.carroModel.getLista())"/>
                       </AuxValues>
                     </Component>
-                    <Component class="es.zurixconsulting.utiles.JCBox" name="jCBox4">
+                    <Component class="es.zurixconsulting.utiles.JCBox" name="cb_r">
                       <Properties>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
@@ -1140,7 +1140,7 @@
                         <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new es.zurixconsulting.utiles.JCBox(this.colorModel.getLista())"/>
                       </AuxValues>
                     </Component>
-                    <Component class="es.zurixconsulting.utiles.JCBox" name="jCBox5">
+                    <Component class="es.zurixconsulting.utiles.JCBox" name="cb_d6">
                       <Properties>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
@@ -1157,7 +1157,7 @@
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCBox5ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cb_d6ActionPerformed"/>
                       </Events>
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new es.zurixconsulting.utiles.JCBox(this.proceModel.getLista())"/>

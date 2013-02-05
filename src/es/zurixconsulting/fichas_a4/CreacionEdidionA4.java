@@ -70,7 +70,7 @@ public class CreacionEdidionA4 extends javax.swing.JDialog {
     }
     private String getCod(){
     SimpleDateFormat anyo = new SimpleDateFormat("yyyy");
-        String cod = anyo.format(new Date())+MainUI.bbdd_Fichas.getContadorAnual();
+        String cod = anyo.format(new Date())+"-"+MainUI.bbdd_Fichas.getContadorAnual();
         return cod;
         
     }
@@ -127,17 +127,17 @@ public class CreacionEdidionA4 extends javax.swing.JDialog {
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
-        jTextField20 = new javax.swing.JTextField();
+        tx_s1 = new javax.swing.JTextField();
         jLabel25 = new javax.swing.JLabel();
         jTextField21 = new javax.swing.JTextField();
         jLabel26 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
         jTextField22 = new javax.swing.JTextField();
-        jCBox1 = new es.zurixconsulting.utiles.JCBox(this.c1Model.getLista());
-        jCBox2 = new es.zurixconsulting.utiles.JCBox(this.c2Model.getLista());
-        jCBox3 = new es.zurixconsulting.utiles.JCBox(this.carroModel.getLista());
-        jCBox4 = new es.zurixconsulting.utiles.JCBox(this.colorModel.getLista());
-        jCBox5 = new es.zurixconsulting.utiles.JCBox(this.proceModel.getLista());
+        cb_cl1 = new es.zurixconsulting.utiles.JCBox(this.c1Model.getLista());
+        cb_cl2 = new es.zurixconsulting.utiles.JCBox(this.c2Model.getLista());
+        cb_j1 = new es.zurixconsulting.utiles.JCBox(this.carroModel.getLista());
+        cb_r = new es.zurixconsulting.utiles.JCBox(this.colorModel.getLista());
+        cb_d6 = new es.zurixconsulting.utiles.JCBox(this.proceModel.getLista());
         jCBox6 = new es.zurixconsulting.utiles.JCBox(this.catModel.getLista());
         jScrollPane2 = new javax.swing.JScrollPane();
         jPanel3 = new javax.swing.JPanel();
@@ -432,11 +432,11 @@ public class CreacionEdidionA4 extends javax.swing.JDialog {
         jLabel24.setForeground(new java.awt.Color(0, 153, 204));
         jLabel24.setText("(R) Color(solo M1)");
 
-        jTextField20.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jTextField20.setForeground(new java.awt.Color(0, 153, 255));
-        jTextField20.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField20.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255), 3));
-        jTextField20.setMargin(new java.awt.Insets(20, 20, 20, 20));
+        tx_s1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        tx_s1.setForeground(new java.awt.Color(0, 153, 255));
+        tx_s1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        tx_s1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255), 3));
+        tx_s1.setMargin(new java.awt.Insets(20, 20, 20, 20));
 
         jLabel25.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel25.setForeground(new java.awt.Color(0, 153, 204));
@@ -462,28 +462,28 @@ public class CreacionEdidionA4 extends javax.swing.JDialog {
         jTextField22.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255), 3));
         jTextField22.setMargin(new java.awt.Insets(20, 20, 20, 20));
 
-        jCBox1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255), 3));
-        jCBox1.setForeground(new java.awt.Color(0, 153, 255));
-        jCBox1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        cb_cl1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255), 3));
+        cb_cl1.setForeground(new java.awt.Color(0, 153, 255));
+        cb_cl1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
-        jCBox2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255), 3));
-        jCBox2.setForeground(new java.awt.Color(0, 153, 255));
-        jCBox2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        cb_cl2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255), 3));
+        cb_cl2.setForeground(new java.awt.Color(0, 153, 255));
+        cb_cl2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
-        jCBox3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255), 3));
-        jCBox3.setForeground(new java.awt.Color(0, 153, 255));
-        jCBox3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        cb_j1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255), 3));
+        cb_j1.setForeground(new java.awt.Color(0, 153, 255));
+        cb_j1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
-        jCBox4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255), 3));
-        jCBox4.setForeground(new java.awt.Color(0, 153, 255));
-        jCBox4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        cb_r.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255), 3));
+        cb_r.setForeground(new java.awt.Color(0, 153, 255));
+        cb_r.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
-        jCBox5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255), 3));
-        jCBox5.setForeground(new java.awt.Color(0, 153, 255));
-        jCBox5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jCBox5.addActionListener(new java.awt.event.ActionListener() {
+        cb_d6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255), 3));
+        cb_d6.setForeground(new java.awt.Color(0, 153, 255));
+        cb_d6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        cb_d6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCBox5ActionPerformed(evt);
+                cb_d6ActionPerformed(evt);
             }
         });
 
@@ -526,7 +526,7 @@ public class CreacionEdidionA4 extends javax.swing.JDialog {
                                     .addComponent(jLabel26))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jCBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cb_r, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jTextField21, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -537,7 +537,7 @@ public class CreacionEdidionA4 extends javax.swing.JDialog {
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addComponent(jLabel25)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextField20, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(tx_s1, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel19)
@@ -546,19 +546,19 @@ public class CreacionEdidionA4 extends javax.swing.JDialog {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jCBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(cb_j1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jCBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(cb_cl1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(tx_d3, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(jPanel2Layout.createSequentialGroup()
                                                 .addComponent(jLabel22)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(jCBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(cb_cl2, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addGroup(jPanel2Layout.createSequentialGroup()
                                                 .addComponent(jLabel18)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -608,7 +608,7 @@ public class CreacionEdidionA4 extends javax.swing.JDialog {
                                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(tx_a1, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE)
                                         .addComponent(tx_a2))))
-                            .addComponent(jCBox5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cb_d6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(226, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
@@ -671,21 +671,21 @@ public class CreacionEdidionA4 extends javax.swing.JDialog {
                 .addGap(10, 10, 10)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel22)
-                    .addComponent(jCBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cb_cl1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel20)
-                    .addComponent(jCBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cb_cl2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel21)
-                    .addComponent(jCBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cb_j1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel23)
-                    .addComponent(jCBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cb_d6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel24)
-                    .addComponent(jCBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cb_r, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel25)
-                    .addComponent(jTextField20, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tx_s1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel26)
@@ -1535,9 +1535,9 @@ public class CreacionEdidionA4 extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jCBox5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBox5ActionPerformed
+    private void cb_d6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_d6ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCBox5ActionPerformed
+    }//GEN-LAST:event_cb_d6ActionPerformed
 
     private void tx_d1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tx_d1ActionPerformed
         // TODO add your handling code here:
@@ -1587,11 +1587,11 @@ public class CreacionEdidionA4 extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private org.matrix.BlackTabbedPane blackTabbedPane1;
     private org.matrix.BlackTabbedPaneUI blackTabbedPaneUI1;
-    private es.zurixconsulting.utiles.JCBox jCBox1;
-    private es.zurixconsulting.utiles.JCBox jCBox2;
-    private es.zurixconsulting.utiles.JCBox jCBox3;
-    private es.zurixconsulting.utiles.JCBox jCBox4;
-    private es.zurixconsulting.utiles.JCBox jCBox5;
+    private es.zurixconsulting.utiles.JCBox cb_cl1;
+    private es.zurixconsulting.utiles.JCBox cb_cl2;
+    private es.zurixconsulting.utiles.JCBox cb_d6;
+    private es.zurixconsulting.utiles.JCBox cb_j1;
+    private es.zurixconsulting.utiles.JCBox cb_r;
     private es.zurixconsulting.utiles.JCBox jCBox6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1676,7 +1676,6 @@ public class CreacionEdidionA4 extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextField jTextField20;
     private javax.swing.JTextField jTextField21;
     private javax.swing.JTextField jTextField22;
     private javax.swing.JTextField jTextField23;
@@ -1733,5 +1732,6 @@ public class CreacionEdidionA4 extends javax.swing.JDialog {
     private org.jdesktop.swingx.JXDatePicker tx_fecha;
     private javax.swing.JTextField tx_realdecreto;
     private javax.swing.JTextField tx_representante;
+    private javax.swing.JTextField tx_s1;
     // End of variables declaration//GEN-END:variables
 }
