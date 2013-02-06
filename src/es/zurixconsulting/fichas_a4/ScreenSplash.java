@@ -1,6 +1,7 @@
 package es.zurixconsulting.fichas_a4;
 import java.awt.*;
 import java.awt.SplashScreen;
+import javax.swing.JOptionPane;
 /**
  * @web http://www.jc-mouse.net
  * @author Mouse
@@ -56,7 +57,11 @@ MainUI ventana;
              ventana.setVisible(true);
          }
 	catch (Exception e) {
-            System.out.println(e.getMessage());
+            System.out.println(e.getMessage()
+                    
+                    );
+            JOptionPane.showMessageDialog(null, e.getMessage(),"Atencion!!!",JOptionPane.ERROR_MESSAGE);
+            System.exit(1);
         }
    }
     

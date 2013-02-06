@@ -35,6 +35,14 @@ public class FichasModel extends AbstractModel {
         return (ArrayList<Fichatecnica>) session.createCriteria(Fichatecnica.class).addOrder(Order.desc("fechatarjeta")).list();
     }
     
+   
+    public ArrayList<Fichatecnica> getBusqueda(String bus) {
+        Session session = factory.getCurrentSession();
+        Transaction tx = session.beginTransaction();
+        return (ArrayList<Fichatecnica>) session.createCriteria(Fichatecnica.class)
+                .add(Restrictions.like("ncertificado", "%"+bus+"%"))
+                .addOrder(Order.desc("fechatarjeta")).list();
+    }
     public int getContadorAnual(){
         SimpleDateFormat anyo = new SimpleDateFormat("yyyy");
         Session session = factory.getCurrentSession();

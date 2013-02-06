@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 04-feb-2013 16:38:37 by Hibernate Tools 3.2.1.GA -->
+<!-- Generated 06-feb-2013 17:57:27 by Hibernate Tools 3.2.1.GA -->
 <hibernate-mapping>
     <class name="es.zurixconsulting.fichas_a4.persistencia.pojos.Fichatecnica" table="FICHATECNICA" schema="FTR">
         <id name="ncertificado" type="string">
@@ -193,6 +193,12 @@
         </property>
         <property name="cl2" type="string">
             <column name="CL2" length="2" />
+        </property>
+        <property name="f2" type="string">
+            <column name="F2" length="10" />
+        </property>
+        <property name="f21" type="string">
+            <column name="F21" length="10" />
         </property>
     </class>
 </hibernate-mapping>

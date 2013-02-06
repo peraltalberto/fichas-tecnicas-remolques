@@ -6,6 +6,7 @@ package es.zurixconsulting.fichas_a4;
 
 
 import es.zurixconsulting.fichas_a4.persistencia.models.FichasModel;
+import es.zurixconsulting.fichas_a4.persistencia.pojos.Fichatecnica;
 import javax.swing.ImageIcon;
 
 /**
@@ -73,6 +74,11 @@ public class MainUI extends javax.swing.JFrame {
         jTextField2.setText("Busqueda rapida de fichas");
         jTextField2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255), 3));
         jTextField2.setMargin(new java.awt.Insets(20, 20, 20, 20));
+        jTextField2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField2FocusGained(evt);
+            }
+        });
 
         jScrollPane2.setBorder(null);
 
@@ -109,24 +115,44 @@ public class MainUI extends javax.swing.JFrame {
         jMetroButton4.setForeground(new java.awt.Color(255, 255, 255));
         jMetroButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/es/zurixconsulting/fichas_a4/numerosMetro/edit.png"))); // NOI18N
         jMetroButton4.setText("EDITAR FICHA");
+        jMetroButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMetroButton4ActionPerformed(evt);
+            }
+        });
 
         jMetroButton5.setBackground(new java.awt.Color(51, 153, 255));
         jMetroButton5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 3));
         jMetroButton5.setForeground(new java.awt.Color(255, 255, 255));
         jMetroButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/es/zurixconsulting/fichas_a4/numerosMetro/delete.png"))); // NOI18N
         jMetroButton5.setText("ELIMINAR FICHA");
+        jMetroButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMetroButton5ActionPerformed(evt);
+            }
+        });
 
         jMetroButton6.setBackground(new java.awt.Color(0, 153, 255));
         jMetroButton6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 3));
         jMetroButton6.setForeground(new java.awt.Color(255, 255, 255));
         jMetroButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/es/zurixconsulting/fichas_a4/numerosMetro/printer.png"))); // NOI18N
         jMetroButton6.setText("IMPRIMIR FICHA");
+        jMetroButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMetroButton6ActionPerformed(evt);
+            }
+        });
 
         jMetroButton7.setBackground(new java.awt.Color(51, 153, 255));
         jMetroButton7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 3));
         jMetroButton7.setForeground(new java.awt.Color(255, 255, 255));
         jMetroButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/es/zurixconsulting/fichas_a4/numerosMetro/search.png"))); // NOI18N
         jMetroButton7.setText("BUSCAR");
+        jMetroButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMetroButton7ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -199,7 +225,30 @@ public class MainUI extends javax.swing.JFrame {
 
     private void jMetroButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMetroButton3ActionPerformed
         new CreacionEdidionA4(this,true);
+        this.jTableArrayList2.setList(bbdd_Fichas.getLista());
     }//GEN-LAST:event_jMetroButton3ActionPerformed
+
+    private void jMetroButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMetroButton4ActionPerformed
+        new CreacionEdidionA4((Fichatecnica)this.jTableArrayList2.getSelectElement(),this,true);
+        this.jTableArrayList2.setList(bbdd_Fichas.getLista());
+    }//GEN-LAST:event_jMetroButton4ActionPerformed
+
+    private void jMetroButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMetroButton5ActionPerformed
+        MainUI.bbdd_Fichas.removeDato((Fichatecnica)this.jTableArrayList2.getSelectElement());
+        this.jTableArrayList2.setList(bbdd_Fichas.getLista());
+    }//GEN-LAST:event_jMetroButton5ActionPerformed
+
+    private void jTextField2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField2FocusGained
+       this.jTextField2.selectAll();
+    }//GEN-LAST:event_jTextField2FocusGained
+
+    private void jMetroButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMetroButton7ActionPerformed
+        this.jTableArrayList2.setList(bbdd_Fichas.getBusqueda(this.jTextField2.getText()));
+    }//GEN-LAST:event_jMetroButton7ActionPerformed
+
+    private void jMetroButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMetroButton6ActionPerformed
+        ImpresionFicha.print((Fichatecnica)this.jTableArrayList2.getSelectElement(), this);
+    }//GEN-LAST:event_jMetroButton6ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.DerbyDialect</property>
+    <property name="hibernate.connection.driver_class">org.apache.derby.jdbc.ClientDriver</property>
+    <property name="hibernate.connection.url">jdbc:derby://localhost:1527/FTR</property>
+    <property name="hibernate.connection.username">ftr</property>
+    <property name="hibernate.connection.password">ftr1234</property>
+    <mapping resource="es/zurixconsulting/fichas_a4/persistencia/pojos/Carroceria.hbm.xml"/>
+    <mapping resource="es/zurixconsulting/fichas_a4/persistencia/pojos/Fichatecnica.hbm.xml"/>
+    <mapping resource="es/zurixconsulting/fichas_a4/persistencia/pojos/Color.hbm.xml"/>
+    <mapping resource="es/zurixconsulting/fichas_a4/persistencia/pojos/Procedencia.hbm.xml"/>
+    <mapping resource="es/zurixconsulting/fichas_a4/persistencia/pojos/Clasificacion2.hbm.xml"/>
+    <mapping resource="es/zurixconsulting/fichas_a4/persistencia/pojos/Clasificacion1.hbm.xml"/>
+    <mapping resource="es/zurixconsulting/fichas_a4/persistencia/pojos/Combustible.hbm.xml"/>
+    <mapping resource="es/zurixconsulting/fichas_a4/persistencia/pojos/Categoria.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>

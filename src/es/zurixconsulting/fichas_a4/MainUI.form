@@ -149,6 +149,9 @@
               <Insets value="[20, 20, 20, 20]"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTextField2FocusGained"/>
+          </Events>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane2">
           <Properties>
@@ -175,6 +178,7 @@
               </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new win8.swing.MetroTableUI()"/>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value=""/>
               </AuxValues>
             </Component>
           </SubComponents>
@@ -234,6 +238,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="EDITAR FICHA"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMetroButton4ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="es.zurixconsulting.fichas_a4.JMetroButton" name="jMetroButton5">
           <Properties>
@@ -255,6 +262,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="ELIMINAR FICHA"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMetroButton5ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="es.zurixconsulting.fichas_a4.JMetroButton" name="jMetroButton6">
           <Properties>
@@ -276,6 +286,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="IMPRIMIR FICHA"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMetroButton6ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="es.zurixconsulting.fichas_a4.JMetroButton" name="jMetroButton7">
           <Properties>
@@ -297,6 +310,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="BUSCAR"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMetroButton7ActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

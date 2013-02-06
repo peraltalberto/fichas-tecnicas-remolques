@@ -1,5 +1,5 @@
 package es.zurixconsulting.fichas_a4.persistencia.pojos;
-// Generated 04-feb-2013 16:38:36 by Hibernate Tools 3.2.1.GA
+// Generated 06-feb-2013 17:57:27 by Hibernate Tools 3.2.1.GA
 
 
 import java.util.Date;
@@ -83,6 +83,8 @@ public class Fichatecnica  implements java.io.Serializable {
      private String r;
      private String cl1;
      private String cl2;
+     private String f2;
+     private String f21;
 
     public Fichatecnica() {
     }
@@ -91,7 +93,7 @@ public class Fichatecnica  implements java.io.Serializable {
     public Fichatecnica(String ncertificado) {
         this.ncertificado = ncertificado;
     }
-    public Fichatecnica(String ncertificado, String nbastidor, Date fechatarjeta, String tipo, Integer fabricante, String d1marca, String d2tipo, String d2variante, String d2version, String d3denom, String khomol, String khomolc, String rdc, String a1, String a2, String ciitv, Integer d6, Integer s1, String k, String z, String observaciones, String opciones, String cv, Integer lne, Integer lnr, Integer l0, Integer l1ne, Integer l1pe, String l2, String g, String f1, String f11, String f15, String o14, String o13, String o12, String o11, String o1, String f3, String f31, String m4, String f4, String f5, String f6, String f7, String f71, String f8, String p51, String p5, String p11, String p1, String p2, String p21, String v9, String v1, String v2, String v7, String jcateg, String j1, String p3, String r, String cl1, String cl2) {
+    public Fichatecnica(String ncertificado, String nbastidor, Date fechatarjeta, String tipo, Integer fabricante, String d1marca, String d2tipo, String d2variante, String d2version, String d3denom, String khomol, String khomolc, String rdc, String a1, String a2, String ciitv, Integer d6, Integer s1, String k, String z, String observaciones, String opciones, String cv, Integer lne, Integer lnr, Integer l0, Integer l1ne, Integer l1pe, String l2, String g, String f1, String f11, String f15, String o14, String o13, String o12, String o11, String o1, String f3, String f31, String m4, String f4, String f5, String f6, String f7, String f71, String f8, String p51, String p5, String p11, String p1, String p2, String p21, String v9, String v1, String v2, String v7, String jcateg, String j1, String p3, String r, String cl1, String cl2, String f2, String f21) {
        this.ncertificado = ncertificado;
        this.nbastidor = nbastidor;
        this.fechatarjeta = fechatarjeta;
@@ -155,6 +157,8 @@ public class Fichatecnica  implements java.io.Serializable {
        this.r = r;
        this.cl1 = cl1;
        this.cl2 = cl2;
+       this.f2 = f2;
+       this.f21 = f21;
     }
    
      @Id 
@@ -724,6 +728,24 @@ public class Fichatecnica  implements java.io.Serializable {
     
     public void setCl2(String cl2) {
         this.cl2 = cl2;
+    }
+    
+    @Column(name="F2", length=10)
+    public String getF2() {
+        return this.f2;
+    }
+    
+    public void setF2(String f2) {
+        this.f2 = f2;
+    }
+    
+    @Column(name="F21", length=10)
+    public String getF21() {
+        return this.f21;
+    }
+    
+    public void setF21(String f21) {
+        this.f21 = f21;
     }
 
 
