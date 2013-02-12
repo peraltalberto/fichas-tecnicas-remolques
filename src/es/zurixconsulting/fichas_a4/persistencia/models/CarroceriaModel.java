@@ -32,7 +32,7 @@ public class CarroceriaModel extends AbstractModel {
     public ArrayList<Carroceria> getLista() {
         Session session = factory.getCurrentSession();
         Transaction tx = session.beginTransaction();
-        return (ArrayList<Carroceria>) session.createCriteria(Carroceria.class).list();
+        return (ArrayList<Carroceria>) session.createCriteria(Carroceria.class).addOrder(Order.asc("id")).list();
     }
     
     

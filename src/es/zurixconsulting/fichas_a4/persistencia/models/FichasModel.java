@@ -32,9 +32,19 @@ public class FichasModel extends AbstractModel {
     public ArrayList<Fichatecnica> getLista() {
         Session session = factory.getCurrentSession();
         Transaction tx = session.beginTransaction();
+        
         return (ArrayList<Fichatecnica>) session.createCriteria(Fichatecnica.class).addOrder(Order.desc("fechatarjeta")).list();
+        
     }
-    
+   
+    public ArrayList<Fichatecnica> getPlantillas() {
+        Session session = factory.getCurrentSession();
+        Transaction tx = session.beginTransaction();
+        
+        return (ArrayList<Fichatecnica>) session.createCriteria(Fichatecnica.class)
+                .add(Restrictions.eq("plantilla", 1)).addOrder(Order.desc("fechatarjeta")).list();
+        
+    }
    
     public ArrayList<Fichatecnica> getBusqueda(String bus) {
         Session session = factory.getCurrentSession();
@@ -43,12 +53,19 @@ public class FichasModel extends AbstractModel {
                 .add(Restrictions.like("ncertificado", "%"+bus+"%"))
                 .addOrder(Order.desc("fechatarjeta")).list();
     }
+    public ArrayList<Fichatecnica> getBastidores() {
+        Session session = factory.getCurrentSession();
+        Transaction tx = session.beginTransaction();
+        return (ArrayList<Fichatecnica>) session.createCriteria(Fichatecnica.class)
+                .setMaxResults(10)
+                .addOrder(Order.desc("fechatarjeta")).list();
+    }
     public int getContadorAnual(){
         SimpleDateFormat anyo = new SimpleDateFormat("yyyy");
         Session session = factory.getCurrentSession();
         Transaction tx = session.beginTransaction();
-        String sql =  "select count(*) + 1 from FICHATECNICA where YEAR(fechatarjeta) = "+anyo.format(new Date());
+        String sql =  "select count(*) + 1 as tot from FICHATECNICA where YEAR(fechatarjeta) = "+anyo.format(new Date());
         
-        return (Integer) session.createSQLQuery(sql).list().get(0);
+        return (Integer) session.createSQLQuery(sql).addScalar("tot").list().get(0);
     }
 }

@@ -10,7 +10,7 @@ public final class ScreenSplash {
 
   final SplashScreen splash ;
   //texto que se muestra a medida que se va cargando el screensplah
-  final String[] texto = {"librerias" ,"configuration", "base de datos",
+  String[] texto = {"librerias" ,"configuration", "base de datos",
                           "modulos","informes","formularios","properties"
                           };
 
@@ -25,6 +25,7 @@ MainUI ventana;
         if (splash != null)
         {
             Graphics2D g = splash.createGraphics();
+            System.out.println(texto);
             for(int i=1; i<texto.length; i++)
             {                       
                 //se pinta texto del array
@@ -43,6 +44,7 @@ MainUI ventana;
                 g.drawLine(205,314, 510, 314);                
                 //se actualiza todo
                 splash.update();
+                System.out.println("valor de I: "+i);
                 if(i ==3){
                     ventana =   new MainUI();
                 }
@@ -51,15 +53,17 @@ MainUI ventana;
 		} catch(InterruptedException e) { }
             }
 	   splash.close();
-	}
+           ventana.setVisible(true);
+	}else{
+         new MainUI().setVisible(true);
+        
+        }
         //una vez terminada la animación se muestra la aplicación principal
          
-             ventana.setVisible(true);
+          
          }
 	catch (Exception e) {
-            System.out.println(e.getMessage()
-                    
-                    );
+            e.printStackTrace();
             JOptionPane.showMessageDialog(null, e.getMessage(),"Atencion!!!",JOptionPane.ERROR_MESSAGE);
             System.exit(1);
         }

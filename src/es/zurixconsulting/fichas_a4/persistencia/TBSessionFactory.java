@@ -196,16 +196,8 @@ public class TBSessionFactory {
                                String sessionFactoryJndiName = cfg
 
                                .getProperty(Environment.SESSION_FACTORY_NAME);
-                               /*Properties prop = new Properties();
-                                    prop.load(new FileInputStream(System.getProperty("user.dir")+"/conexion.properties"));
-                               try{
-                                    cfg.setProperty("hibernate.connection.url", prop.getProperty("hibernate.connection.url"));
-                                     cfg.setProperty("hibernate.connection.username", prop.getProperty("hibernate.connection.username"));
-                                      cfg.setProperty("hibernate.connection.password", prop.getProperty("hibernate.connection.password"));
-                               }catch(NullPointerException e){
-                                   
-                               } */
-                                    
+                               
+                                
                                if (sessionFactoryJndiName != null) {
 
                                       cfg.buildSessionFactory();
@@ -217,6 +209,7 @@ public class TBSessionFactory {
                                                      .lookup(sessionFactoryJndiName);
 
                                } else{
+                                   
 
                                      // log.debug("classic factory");
 

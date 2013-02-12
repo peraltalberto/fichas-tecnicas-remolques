@@ -8,8 +8,9 @@
   <table-filter match-name="CLASIFICACION2"/>
   <table-filter match-name="COLOR"/>
   <table-filter match-name="COMBUSTIBLE"/>
-  
+  <table-filter match-name="FICHATECNICA"/>
   <table-filter match-name="PROCEDENCIA"/>
   -->
   <table-filter match-name="FICHATECNICA"/>
+
 </hibernate-reverse-engineering>

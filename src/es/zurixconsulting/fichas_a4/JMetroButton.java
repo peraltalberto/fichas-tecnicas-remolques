@@ -69,4 +69,12 @@ public class JMetroButton extends JButton implements MouseListener{
 
     public void mouseExited(MouseEvent e) {}
 
+    @Override
+    public void setBackground(Color color) {
+        super.setBackground(color);
+        this.button_released = color;
+        
+    }
+
+    
 }

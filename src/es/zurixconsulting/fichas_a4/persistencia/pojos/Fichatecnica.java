@@ -1,5 +1,5 @@
 package es.zurixconsulting.fichas_a4.persistencia.pojos;
-// Generated 06-feb-2013 17:57:27 by Hibernate Tools 3.2.1.GA
+// Generated 11-feb-2013 10:22:59 by Hibernate Tools 3.2.1.GA
 
 
 import java.util.Date;
@@ -34,14 +34,11 @@ public class Fichatecnica  implements java.io.Serializable {
      private String khomolc;
      private String rdc;
      private String a1;
-     private String a2;
      private String ciitv;
      private Integer d6;
      private Integer s1;
      private String k;
      private String z;
-     private String observaciones;
-     private String opciones;
      private String cv;
      private Integer lne;
      private Integer lnr;
@@ -78,13 +75,19 @@ public class Fichatecnica  implements java.io.Serializable {
      private String v2;
      private String v7;
      private String jcateg;
-     private String j1;
      private String p3;
      private String r;
      private String cl1;
      private String cl2;
      private String f2;
      private String f21;
+     private String j1;
+     private String a2;
+     private String opciones;
+     private String observaciones;
+     private String l1;
+     private String m1;
+     private Integer plantilla;
 
     public Fichatecnica() {
     }
@@ -93,7 +96,7 @@ public class Fichatecnica  implements java.io.Serializable {
     public Fichatecnica(String ncertificado) {
         this.ncertificado = ncertificado;
     }
-    public Fichatecnica(String ncertificado, String nbastidor, Date fechatarjeta, String tipo, Integer fabricante, String d1marca, String d2tipo, String d2variante, String d2version, String d3denom, String khomol, String khomolc, String rdc, String a1, String a2, String ciitv, Integer d6, Integer s1, String k, String z, String observaciones, String opciones, String cv, Integer lne, Integer lnr, Integer l0, Integer l1ne, Integer l1pe, String l2, String g, String f1, String f11, String f15, String o14, String o13, String o12, String o11, String o1, String f3, String f31, String m4, String f4, String f5, String f6, String f7, String f71, String f8, String p51, String p5, String p11, String p1, String p2, String p21, String v9, String v1, String v2, String v7, String jcateg, String j1, String p3, String r, String cl1, String cl2, String f2, String f21) {
+    public Fichatecnica(String ncertificado, String nbastidor, Date fechatarjeta, String tipo, Integer fabricante, String d1marca, String d2tipo, String d2variante, String d2version, String d3denom, String khomol, String khomolc, String rdc, String a1, String ciitv, Integer d6, Integer s1, String k, String z, String cv, Integer lne, Integer lnr, Integer l0, Integer l1ne, Integer l1pe, String l2, String g, String f1, String f11, String f15, String o14, String o13, String o12, String o11, String o1, String f3, String f31, String m4, String f4, String f5, String f6, String f7, String f71, String f8, String p51, String p5, String p11, String p1, String p2, String p21, String v9, String v1, String v2, String v7, String jcateg, String p3, String r, String cl1, String cl2, String f2, String f21, String j1, String a2, String opciones, String observaciones, String l1, String m1, Integer plantilla) {
        this.ncertificado = ncertificado;
        this.nbastidor = nbastidor;
        this.fechatarjeta = fechatarjeta;
@@ -108,14 +111,11 @@ public class Fichatecnica  implements java.io.Serializable {
        this.khomolc = khomolc;
        this.rdc = rdc;
        this.a1 = a1;
-       this.a2 = a2;
        this.ciitv = ciitv;
        this.d6 = d6;
        this.s1 = s1;
        this.k = k;
        this.z = z;
-       this.observaciones = observaciones;
-       this.opciones = opciones;
        this.cv = cv;
        this.lne = lne;
        this.lnr = lnr;
@@ -152,13 +152,19 @@ public class Fichatecnica  implements java.io.Serializable {
        this.v2 = v2;
        this.v7 = v7;
        this.jcateg = jcateg;
-       this.j1 = j1;
        this.p3 = p3;
        this.r = r;
        this.cl1 = cl1;
        this.cl2 = cl2;
        this.f2 = f2;
        this.f21 = f21;
+       this.j1 = j1;
+       this.a2 = a2;
+       this.opciones = opciones;
+       this.observaciones = observaciones;
+       this.l1 = l1;
+       this.m1 = m1;
+       this.plantilla = plantilla;
     }
    
      @Id 
@@ -289,15 +295,6 @@ public class Fichatecnica  implements java.io.Serializable {
         this.a1 = a1;
     }
     
-    @Column(name="A2", length=50)
-    public String getA2() {
-        return this.a2;
-    }
-    
-    public void setA2(String a2) {
-        this.a2 = a2;
-    }
-    
     @Column(name="CIITV", length=50)
     public String getCiitv() {
         return this.ciitv;
@@ -341,24 +338,6 @@ public class Fichatecnica  implements java.io.Serializable {
     
     public void setZ(String z) {
         this.z = z;
-    }
-    
-    @Column(name="OBSERVACIONES")
-    public String getObservaciones() {
-        return this.observaciones;
-    }
-    
-    public void setObservaciones(String observaciones) {
-        this.observaciones = observaciones;
-    }
-    
-    @Column(name="OPCIONES")
-    public String getOpciones() {
-        return this.opciones;
-    }
-    
-    public void setOpciones(String opciones) {
-        this.opciones = opciones;
     }
     
     @Column(name="CV", length=50)
@@ -685,15 +664,6 @@ public class Fichatecnica  implements java.io.Serializable {
         this.jcateg = jcateg;
     }
     
-    @Column(name="J1", length=2)
-    public String getJ1() {
-        return this.j1;
-    }
-    
-    public void setJ1(String j1) {
-        this.j1 = j1;
-    }
-    
     @Column(name="P3", length=3)
     public String getP3() {
         return this.p3;
@@ -746,6 +716,69 @@ public class Fichatecnica  implements java.io.Serializable {
     
     public void setF21(String f21) {
         this.f21 = f21;
+    }
+    
+    @Column(name="J1", length=4)
+    public String getJ1() {
+        return this.j1;
+    }
+    
+    public void setJ1(String j1) {
+        this.j1 = j1;
+    }
+    
+    @Column(name="A2")
+    public String getA2() {
+        return this.a2;
+    }
+    
+    public void setA2(String a2) {
+        this.a2 = a2;
+    }
+    
+    @Column(name="OPCIONES", length=650)
+    public String getOpciones() {
+        return this.opciones;
+    }
+    
+    public void setOpciones(String opciones) {
+        this.opciones = opciones;
+    }
+    
+    @Column(name="OBSERVACIONES", length=650)
+    public String getObservaciones() {
+        return this.observaciones;
+    }
+    
+    public void setObservaciones(String observaciones) {
+        this.observaciones = observaciones;
+    }
+    
+    @Column(name="L1", length=5)
+    public String getL1() {
+        return this.l1;
+    }
+    
+    public void setL1(String l1) {
+        this.l1 = l1;
+    }
+    
+    @Column(name="M1", length=5)
+    public String getM1() {
+        return this.m1;
+    }
+    
+    public void setM1(String m1) {
+        this.m1 = m1;
+    }
+    
+    @Column(name="PLANTILLA")
+    public Integer getPlantilla() {
+        return this.plantilla;
+    }
+    
+    public void setPlantilla(Integer plantilla) {
+        this.plantilla = plantilla;
     }
 
 

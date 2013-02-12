@@ -6,6 +6,7 @@ package es.zurixconsulting.fichas_a4;
 
 import es.zurixconsulting.fichas_a4.persistencia.pojos.Categoria;
 import es.zurixconsulting.fichas_a4.persistencia.pojos.Fichatecnica;
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JFileChooser;
@@ -27,7 +28,8 @@ import net.sf.jasperreports.swing.JRViewer;
  */
 public class ImpresionFicha {
     
-  
+  public ImpresionFicha(){
+  }
     
     public static void print(Fichatecnica ficha,JFrame parent){
     
@@ -69,7 +71,7 @@ public class ImpresionFicha {
             parameters.put("LNR", ficha.getLnr());
             parameters.put("LNE", ficha.getLne());
             parameters.put("L0", ficha.getL0());
-            parameters.put("L1", ficha.getL1ne());
+            parameters.put("L1", ficha.getL1());
             parameters.put("L1PE", ficha.getL1pe());
             parameters.put("L2", ficha.getL2());
             parameters.put("P51", ficha.getP51());
@@ -86,6 +88,7 @@ public class ImpresionFicha {
             parameters.put("A1", ficha.getA1());
             parameters.put("A2", ficha.getA2());
             parameters.put("J1", ficha.getJ1());
+            parameters.put("M1", ficha.getM1());
             parameters.put("rutafirma", System.getProperty("user.dir")+"/img/firma.jpg");
             parameters.put("rutalogo", System.getProperty("user.dir")+"/img/logo1.jpg");
 
@@ -104,6 +107,7 @@ JOptionPane.showMessageDialog(null,"Error cargando el reporte maestro: " + e.get
      JFileChooser chooser = new JFileChooser();
      FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivos Pdf","pdf");
      chooser.setFileFilter(filter);
+     chooser.setSelectedFile(new File(ficha.getNcertificado()+".pdf"));
      chooser.showSaveDialog(chooser);
      
      JasperExportManager.exportReportToPdfFile(jasperPrint,chooser.getSelectedFile().getAbsolutePath());//System.getProperty("user.dir")+"/temp/temp_ficha.pdf" );

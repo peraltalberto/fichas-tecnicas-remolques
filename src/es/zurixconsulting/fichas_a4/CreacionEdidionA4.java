@@ -16,12 +16,20 @@ import es.zurixconsulting.fichas_a4.persistencia.pojos.Categoria;
 import es.zurixconsulting.fichas_a4.persistencia.pojos.Clasificacion1;
 import es.zurixconsulting.fichas_a4.persistencia.pojos.Clasificacion2;
 import es.zurixconsulting.fichas_a4.persistencia.pojos.Color;
+
 import es.zurixconsulting.fichas_a4.persistencia.pojos.Combustible;
 import es.zurixconsulting.fichas_a4.persistencia.pojos.Fichatecnica;
 import es.zurixconsulting.fichas_a4.persistencia.pojos.Procedencia;
+import java.awt.MouseInfo;
+import java.awt.Point;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -43,7 +51,8 @@ public class CreacionEdidionA4 extends javax.swing.JDialog {
     public CreacionEdidionA4(Fichatecnica ficha,java.awt.Frame parent, boolean modal) {
        
         super(parent, modal);
-        
+        this.parent = (JFrame) parent;
+                
         
         if(ficha.getNcertificado() == null){
             ficha.setNcertificado(getCod());
@@ -55,7 +64,36 @@ public class CreacionEdidionA4 extends javax.swing.JDialog {
         this.setVisible(true);
         
     }
-
+    public CreacionEdidionA4(Fichatecnica ficha,java.awt.Frame parent, boolean modal,boolean plantilla) {
+       
+        super(parent, modal);
+        
+        this.parent = (JFrame) parent;
+        initComponents();
+        if(plantilla){
+        this.ficha = ficha;
+        cargarDatos();        
+        
+        this.ficha = new Fichatecnica(getCod());
+        
+        this.txNCertificado.setText(this.ficha.getNcertificado());
+        }else{
+        if(ficha.getNcertificado() == null){
+            ficha.setNcertificado(getCod());
+        }
+        
+        this.ficha = ficha;
+        cargarDatos();
+        
+        }
+        
+        
+        
+        this.setLocationRelativeTo(parent);
+        this.setVisible(true);
+         
+    }
+    JFrame parent;
     private void cargarDatos(){
         
         /*
@@ -63,11 +101,11 @@ public class CreacionEdidionA4 extends javax.swing.JDialog {
          */
         this.txNCertificado.setText(ficha.getNcertificado()==null?getCod():ficha.getNcertificado());
         this.tx_fecha.setDate(ficha.getFechatarjeta()==null?new Date():ficha.getFechatarjeta());
-        this.tx_a1.setText(ficha.getA1()==null?"":ficha.getA1());
-        this.tx_a2.setText(ficha.getA2()==null?"":ficha.getA2());
+        this.tx_a1.setText(ficha.getA1()==null?"REMOLQUES BALLESTER, C.B.":ficha.getA1());
+        this.tx_a2.setText(ficha.getA2()==null?"C/ NORTE, 9.P.I. EL CANARI -L'ALCUDIA DE CRESPINS-VALENCIA,46690":ficha.getA2());
         this.tx_ci.setText(ficha.getCiitv()==null?"":ficha.getCiitv());
-        this.tx_d1.setText(ficha.getD1marca()==null?"":ficha.getD1marca());
-        this.tx_d2t.setText(ficha.getD2tipo()==null?"":ficha.getD2tipo());
+        this.tx_d1.setText(ficha.getD1marca()==null?"REMOLQUES BALLESTER":ficha.getD1marca());
+        this.cb_d2T.setSelectedItem(ficha.getD2tipo()==null?"":ficha.getD2tipo());
         this.tx_d2v.setText(ficha.getD2variante()==null?"":ficha.getD2variante());
         this.tx_d2vs.setText(ficha.getD2version()==null?"":ficha.getD2version());
         this.tx_d3.setText(ficha.getD3denom()==null?"":ficha.getD3denom());
@@ -92,10 +130,16 @@ public class CreacionEdidionA4 extends javax.swing.JDialog {
        
         this.tx_e.setText(ficha.getNbastidor()==null?"":ficha.getNbastidor());
         this.tx_s1.setText(ficha.getS1()==null?"0":String.valueOf(ficha.getS1()));
-        this.tx_k.setText(ficha.getK()==null?"":ficha.getK());
+        this.cb_k.setSelectedItem(ficha.getK()==null?"":ficha.getK());
         this.tx_z.setText(ficha.getZ()==null?"":ficha.getZ());
-        this.ta_observaciones.setText(ficha.getObservaciones()==null?"":ficha.getObservaciones());
-        this.ta_opciones.setText(ficha.getOpciones()==null?"":ficha.getOpciones());
+        this.ta_observaciones.setText(ficha.getObservaciones()==null?"*******************************************************************************************"
+                + "\n*******************************************************************************************"
+                + "\n*******************************************************************************************"
+                + "\n*******************************************************************************************":ficha.getObservaciones());
+        this.ta_opciones.setText(ficha.getOpciones()==null?"*******************************************************************************************"
+                + "\n*******************************************************************************************"
+                + "\n*******************************************************************************************"
+                + "\n*******************************************************************************************":ficha.getOpciones());
         this.tx_cv.setText(ficha.getCv()==null?"":ficha.getCv());
         /****************************************************************************
          * Parametros MASAS
@@ -104,28 +148,22 @@ public class CreacionEdidionA4 extends javax.swing.JDialog {
         this.tx_lnr.setText(ficha.getLnr()==null?"":String.valueOf(ficha.getLnr()));
         this.tx_lne.setText(ficha.getLne()==null?"":String.valueOf(ficha.getLne()));
         this.tx_l0.setText(ficha.getL0()==null?"":String.valueOf(ficha.getL0()));
-        this.tx_l1.setText(ficha.getL1ne()==null?"":String.valueOf(ficha.getL1ne()));
+        this.tx_l1.setText(ficha.getL1()==null?"":String.valueOf(ficha.getL1()));
         this.tx_l2.setText(ficha.getL2()==null?"":String.valueOf(ficha.getL2()));
         this.tx_g.setText(ficha.getG()==null?"":String.valueOf(ficha.getG()));
         this.tx_f1.setText(ficha.getF1()==null?"":String.valueOf(ficha.getF1()));
         this.tx_f11.setText(ficha.getF11()==null?"":String.valueOf(ficha.getF11()));
-        this.tx_f15.setText(ficha.getF15()==null?"":String.valueOf(ficha.getF15()));
-       // this.tx_f2.setText(ficha.getF()==null?"0":String.valueOf(ficha.getF2()));
-        //this.tx_f21.setText(ficha.getF21()==null?"0":String.valueOf(ficha.getF21()));
-        this.tx_o14.setText(ficha.getO14()==null?"":String.valueOf(ficha.getO14()));
-        this.tx_o13.setText(ficha.getO13()==null?"":String.valueOf(ficha.getO13()));
-        this.tx_o12.setText(ficha.getO12()==null?"":String.valueOf(ficha.getO12()));
-        this.tx_o11.setText(ficha.getO11()==null?"":String.valueOf(ficha.getO11()));
-        this.tx_o1.setText(ficha.getO1()==null?"":String.valueOf(ficha.getO1()));
-        this.tx_f3.setText(ficha.getF3()==null?"":String.valueOf(ficha.getF3()));
-        this.tx_f31.setText(ficha.getF31()==null?"":String.valueOf(ficha.getF31()));
+        
+        this.tx_f2.setText(ficha.getF2()==null?"0":String.valueOf(ficha.getF2()));
+        this.tx_f21.setText(ficha.getF21()==null?"0":String.valueOf(ficha.getF21()));
+        
         
         /*
          *  Parametros Dimensiones 
          */
         
-        //this.tx_m1.setText(ficha.getM1()==null?"":String.valueOf(ficha.getM1()));
-        this.tx_m4.setText(ficha.getM4()==null?"":String.valueOf(ficha.getM4()));
+        this.tx_m1.setText(ficha.getM1()==null?"":String.valueOf(ficha.getM1()));
+        
         this.tx_f4.setText(ficha.getF4()==null?"":String.valueOf(ficha.getF4()));
         this.tx_f5.setText(ficha.getF5()==null?"":String.valueOf(ficha.getF5()));
         this.tx_f6.setText(ficha.getF6()==null?"":String.valueOf(ficha.getF6()));
@@ -164,7 +202,7 @@ public class CreacionEdidionA4 extends javax.swing.JDialog {
         ficha.setA2(this.tx_a2.getText());
         
         ficha.setD1marca(this.tx_d1.getText());
-        ficha.setD2tipo(this.tx_d2t.getText());
+        ficha.setD2tipo(this.cb_d2T.getSelectedItem());
         ficha.setD2variante(this.tx_d2v.getText());
         ficha.setD2version(this.tx_d2vs.getText());
         ficha.setD3denom(this.tx_d3.getText());
@@ -179,7 +217,7 @@ public class CreacionEdidionA4 extends javax.swing.JDialog {
         }catch(NumberFormatException e){
         ficha.setS1(0);
     }
-        ficha.setK(this.tx_k.getText());
+        ficha.setK(this.cb_k.getSelectedItem());
         ficha.setObservaciones(this.ta_observaciones.getText());
         ficha.setOpciones(this.ta_opciones.getText());
         ficha.setCv(this.tx_cv.getText());
@@ -198,26 +236,20 @@ public class CreacionEdidionA4 extends javax.swing.JDialog {
         }catch(NumberFormatException e){
         ficha.setL0(0);
     }
-        //ficha.setL1(this.tx_l1.getText())
+        ficha.setL1(this.tx_l1.getText());
         ficha.setL2(this.tx_l2.getText());
         ficha.setG(this.tx_g.getText());
         ficha.setF1(this.tx_f1.getText());
         ficha.setF11(this.tx_f11.getText());
-        ficha.setF15(this.tx_f15.getText());
-        //ficha.setF2(this.tx_f2.getText());
-        //ficha.setF21(this.tx_f21.getText());
-        ficha.setO14(this.tx_o14.getText());
-        ficha.setO13(this.tx_o13.getText());
-        ficha.setO12(this.tx_o12.getText());
-        ficha.setO11(this.tx_o11.getText());
-        ficha.setO1(this.tx_o1.getText());
-        ficha.setF3(this.tx_f3.getText());
-        ficha.setF31(this.tx_f31.getText());
+      ;
+        ficha.setF2(this.tx_f2.getText());
+        ficha.setF21(this.tx_f21.getText());
+      
         
         // DIMENSIONES 
         
-        //ficha.setM1(this.tx_m1.getText());
-        ficha.setM4(this.tx_m4.getText());
+        ficha.setM1(this.tx_m1.getText());
+       
         ficha.setF4(this.tx_f4.getText());
         ficha.setF5(this.tx_f5.getText());
         ficha.setF6(this.tx_f6.getText());
@@ -293,7 +325,6 @@ public class CreacionEdidionA4 extends javax.swing.JDialog {
         tx_representante = new javax.swing.JTextField();
         tx_d1 = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
-        tx_d2t = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         tx_d2vs = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
@@ -310,7 +341,6 @@ public class CreacionEdidionA4 extends javax.swing.JDialog {
         jLabel24 = new javax.swing.JLabel();
         tx_s1 = new javax.swing.JTextField();
         jLabel25 = new javax.swing.JLabel();
-        tx_k = new javax.swing.JTextField();
         jLabel26 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
         tx_z = new javax.swing.JTextField();
@@ -320,6 +350,9 @@ public class CreacionEdidionA4 extends javax.swing.JDialog {
         cb_r = new es.zurixconsulting.utiles.JCBox(this.colorModel.getLista());
         cb_d6 = new es.zurixconsulting.utiles.JCBox(this.proceModel.getLista());
         cb_j = new es.zurixconsulting.utiles.JCBox<Categoria>(this.catModel.getLista());
+        cb_d2T = new es.zurixconsulting.utiles.JCBox<String>();
+        cb_k = new es.zurixconsulting.utiles.JCBox<String>();
+        jMetroButton3 = new es.zurixconsulting.fichas_a4.JMetroButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -336,13 +369,8 @@ public class CreacionEdidionA4 extends javax.swing.JDialog {
         jLabel32 = new javax.swing.JLabel();
         tx_l1 = new javax.swing.JTextField();
         tx_f11 = new javax.swing.JTextField();
-        jLabel33 = new javax.swing.JLabel();
-        jLabel34 = new javax.swing.JLabel();
-        tx_f15 = new javax.swing.JTextField();
         jLabel35 = new javax.swing.JLabel();
         tx_f1 = new javax.swing.JTextField();
-        jLabel37 = new javax.swing.JLabel();
-        tx_o11 = new javax.swing.JTextField();
         jLabel38 = new javax.swing.JLabel();
         tx_l2 = new javax.swing.JTextField();
         jLabel39 = new javax.swing.JLabel();
@@ -351,27 +379,14 @@ public class CreacionEdidionA4 extends javax.swing.JDialog {
         tx_g = new javax.swing.JTextField();
         jLabel41 = new javax.swing.JLabel();
         tx_f2 = new javax.swing.JTextField();
-        jLabel42 = new javax.swing.JLabel();
         tx_l0 = new javax.swing.JTextField();
         jLabel43 = new javax.swing.JLabel();
-        tx_o13 = new javax.swing.JTextField();
-        jLabel44 = new javax.swing.JLabel();
-        tx_o14 = new javax.swing.JTextField();
         jLabel45 = new javax.swing.JLabel();
-        tx_o1 = new javax.swing.JTextField();
         jLabel46 = new javax.swing.JLabel();
-        tx_o12 = new javax.swing.JTextField();
-        jLabel47 = new javax.swing.JLabel();
-        tx_f3 = new javax.swing.JTextField();
-        jLabel48 = new javax.swing.JLabel();
-        jLabel49 = new javax.swing.JLabel();
-        tx_f31 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         tx_lne = new javax.swing.JTextField();
         jScrollPane6 = new javax.swing.JScrollPane();
         jPanel5 = new javax.swing.JPanel();
-        jLabel50 = new javax.swing.JLabel();
-        tx_m4 = new javax.swing.JTextField();
         jLabel51 = new javax.swing.JLabel();
         tx_f4 = new javax.swing.JTextField();
         tx_f5 = new javax.swing.JTextField();
@@ -411,12 +426,13 @@ public class CreacionEdidionA4 extends javax.swing.JDialog {
         tx_v7 = new javax.swing.JTextField();
         cb_p3 = new es.zurixconsulting.utiles.JCBox<Combustible>(this.combusModel.getLista());
         jMetroButton1 = new es.zurixconsulting.fichas_a4.JMetroButton();
+        jMetroButton6 = new es.zurixconsulting.fichas_a4.JMetroButton();
         jMetroButton2 = new es.zurixconsulting.fichas_a4.JMetroButton();
+        bt_plantilla = new es.zurixconsulting.fichas_a4.JMetroButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("- FICHAS A4 -");
         setMinimumSize(new java.awt.Dimension(1020, 720));
-        setPreferredSize(new java.awt.Dimension(1020, 720));
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
 
@@ -507,12 +523,6 @@ public class CreacionEdidionA4 extends javax.swing.JDialog {
         jLabel14.setForeground(new java.awt.Color(0, 153, 204));
         jLabel14.setText("(D.1)Marca");
 
-        tx_d2t.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        tx_d2t.setForeground(new java.awt.Color(0, 153, 255));
-        tx_d2t.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        tx_d2t.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255), 3));
-        tx_d2t.setMargin(new java.awt.Insets(20, 20, 20, 20));
-
         jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(0, 153, 204));
         jLabel15.setText("(D.2)Tipo");
@@ -587,12 +597,6 @@ public class CreacionEdidionA4 extends javax.swing.JDialog {
         jLabel25.setForeground(new java.awt.Color(0, 153, 204));
         jLabel25.setText("(S.1) Nº Plazas");
 
-        tx_k.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        tx_k.setForeground(new java.awt.Color(0, 153, 255));
-        tx_k.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        tx_k.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255), 3));
-        tx_k.setMargin(new java.awt.Insets(20, 20, 20, 20));
-
         jLabel26.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel26.setForeground(new java.awt.Color(0, 153, 204));
         jLabel26.setText("(K) Contraseña Vehic. Base.");
@@ -637,6 +641,26 @@ public class CreacionEdidionA4 extends javax.swing.JDialog {
         cb_j.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         cb_j.setOpaque(false);
 
+        cb_d2T.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255), 3));
+        cb_d2T.setForeground(new java.awt.Color(0, 153, 255));
+        cb_d2T.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "RBES01", "RBET01", "RBET02" }));
+        cb_d2T.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        cb_d2T.setOpaque(false);
+
+        cb_k.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255), 3));
+        cb_k.setForeground(new java.awt.Color(0, 153, 255));
+        cb_k.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "e9*2007/46*0334*00", "e9*2007/46*0332*00", "e9*2007/46*0333*00" }));
+        cb_k.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        cb_k.setOpaque(false);
+
+        jMetroButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/es/zurixconsulting/fichas_a4/numerosMetro/search24.png"))); // NOI18N
+        jMetroButton3.setText("");
+        jMetroButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMetroButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -644,25 +668,6 @@ public class CreacionEdidionA4 extends javax.swing.JDialog {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(tx_d2v, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(tx_d1, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(tx_d2t, javax.swing.GroupLayout.DEFAULT_SIZE, 345, Short.MAX_VALUE)
-                            .addComponent(tx_d2vs))
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -670,19 +675,19 @@ public class CreacionEdidionA4 extends javax.swing.JDialog {
                                     .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel26))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cb_r, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tx_k, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(cb_k, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(cb_r, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addComponent(jLabel27)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(tx_z, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(tx_z))
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addComponent(jLabel25)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(tx_s1, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
+                                        .addComponent(tx_s1, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel19)
@@ -701,13 +706,15 @@ public class CreacionEdidionA4 extends javax.swing.JDialog {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                                .addComponent(jLabel22)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(cb_cl2, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(jPanel2Layout.createSequentialGroup()
                                                 .addComponent(jLabel18)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(tx_ci, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                                .addComponent(tx_ci, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                                .addComponent(jLabel22)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                    .addComponent(cb_d6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                    .addComponent(cb_cl2, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)))))))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel5)
@@ -721,7 +728,9 @@ public class CreacionEdidionA4 extends javax.swing.JDialog {
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(tx_e, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(tx_e, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jMetroButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -738,9 +747,27 @@ public class CreacionEdidionA4 extends javax.swing.JDialog {
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(tx_a1)
-                                        .addComponent(tx_a2, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE))))
-                            .addComponent(cb_d6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(243, Short.MAX_VALUE))))
+                                        .addComponent(tx_a2, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE)))))
+                        .addContainerGap(309, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(tx_d2v, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(tx_d1, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(tx_d2vs, javax.swing.GroupLayout.DEFAULT_SIZE, 345, Short.MAX_VALUE)
+                            .addComponent(cb_d2T, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -750,7 +777,8 @@ public class CreacionEdidionA4 extends javax.swing.JDialog {
                     .addComponent(txNCertificado, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
                     .addComponent(tx_e, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
+                    .addComponent(jLabel6)
+                    .addComponent(jMetroButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tx_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -774,7 +802,7 @@ public class CreacionEdidionA4 extends javax.swing.JDialog {
                     .addComponent(jLabel14)
                     .addComponent(tx_d1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel15)
-                    .addComponent(tx_d2t, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cb_d2T, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17)
@@ -808,10 +836,10 @@ public class CreacionEdidionA4 extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel26)
-                    .addComponent(tx_k, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel27)
-                    .addComponent(tx_z, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37))
+                    .addComponent(tx_z, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cb_k, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(100, 100, 100))
         );
 
         jScrollPane1.setViewportView(jPanel2);
@@ -822,6 +850,7 @@ public class CreacionEdidionA4 extends javax.swing.JDialog {
         ta_observaciones.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         ta_observaciones.setForeground(new java.awt.Color(0, 153, 255));
         ta_observaciones.setRows(5);
+        ta_observaciones.setText("*******************************************************************************************\n*******************************************************************************************\n*******************************************************************************************\n*******************************************************************************************");
         ta_observaciones.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255), 3));
         jScrollPane3.setViewportView(ta_observaciones);
 
@@ -911,20 +940,6 @@ public class CreacionEdidionA4 extends javax.swing.JDialog {
         tx_f11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255), 3));
         tx_f11.setMargin(new java.awt.Insets(20, 20, 20, 20));
 
-        jLabel33.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel33.setForeground(new java.awt.Color(0, 153, 204));
-        jLabel33.setText("(O.1.3) Masa Remlq. Tecnic. adminsible (Remq. central) ");
-
-        jLabel34.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel34.setForeground(new java.awt.Color(0, 153, 204));
-        jLabel34.setText("(O.1) Masa Remlq. Tecnic. adminsible / MM Remolcable con frenos (Cat L)");
-
-        tx_f15.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        tx_f15.setForeground(new java.awt.Color(0, 153, 255));
-        tx_f15.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        tx_f15.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255), 3));
-        tx_f15.setMargin(new java.awt.Insets(20, 20, 20, 20));
-
         jLabel35.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel35.setForeground(new java.awt.Color(0, 153, 204));
         jLabel35.setText("(L.0) Nº de ejes con ruedas gemelas");
@@ -934,16 +949,6 @@ public class CreacionEdidionA4 extends javax.swing.JDialog {
         tx_f1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         tx_f1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255), 3));
         tx_f1.setMargin(new java.awt.Insets(20, 20, 20, 20));
-
-        jLabel37.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel37.setForeground(new java.awt.Color(0, 153, 204));
-        jLabel37.setText("(O.1.4) Masa Remlq. Tecnic. adminsible (sin Feno)");
-
-        tx_o11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        tx_o11.setForeground(new java.awt.Color(0, 153, 255));
-        tx_o11.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        tx_o11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255), 3));
-        tx_o11.setMargin(new java.awt.Insets(20, 20, 20, 20));
 
         jLabel38.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel38.setForeground(new java.awt.Color(0, 153, 204));
@@ -985,10 +990,6 @@ public class CreacionEdidionA4 extends javax.swing.JDialog {
         tx_f2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255), 3));
         tx_f2.setMargin(new java.awt.Insets(20, 20, 20, 20));
 
-        jLabel42.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel42.setForeground(new java.awt.Color(0, 153, 204));
-        jLabel42.setText("(O.1.1) Masa Remlq. Tecnic. adminsible (Remolque con barra de traccion)");
-
         tx_l0.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         tx_l0.setForeground(new java.awt.Color(0, 153, 255));
         tx_l0.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -999,65 +1000,13 @@ public class CreacionEdidionA4 extends javax.swing.JDialog {
         jLabel43.setForeground(new java.awt.Color(0, 153, 204));
         jLabel43.setText("(F.2.1) MMA Ejes (Kg)");
 
-        tx_o13.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        tx_o13.setForeground(new java.awt.Color(0, 153, 255));
-        tx_o13.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        tx_o13.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255), 3));
-        tx_o13.setMargin(new java.awt.Insets(20, 20, 20, 20));
-
-        jLabel44.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel44.setForeground(new java.awt.Color(0, 153, 204));
-        jLabel44.setText("(F.1.5) MMTA 5ª Rueda (Cat N) / King PIN (Cat O) (Kg)");
-
-        tx_o14.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        tx_o14.setForeground(new java.awt.Color(0, 153, 255));
-        tx_o14.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        tx_o14.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255), 3));
-        tx_o14.setMargin(new java.awt.Insets(20, 20, 20, 20));
-
         jLabel45.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel45.setForeground(new java.awt.Color(0, 153, 204));
         jLabel45.setText("(G) Masa en orden de marcha");
 
-        tx_o1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        tx_o1.setForeground(new java.awt.Color(0, 153, 255));
-        tx_o1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        tx_o1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255), 3));
-        tx_o1.setMargin(new java.awt.Insets(20, 20, 20, 20));
-
         jLabel46.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel46.setForeground(new java.awt.Color(0, 153, 204));
         jLabel46.setText("(F.1) MMTA (Kg)");
-
-        tx_o12.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        tx_o12.setForeground(new java.awt.Color(0, 153, 255));
-        tx_o12.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        tx_o12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255), 3));
-        tx_o12.setMargin(new java.awt.Insets(20, 20, 20, 20));
-
-        jLabel47.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel47.setForeground(new java.awt.Color(0, 153, 204));
-        jLabel47.setText("(O.1.2) Masa Remlq. Tecnic. adminisible (Semiremolque)");
-
-        tx_f3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        tx_f3.setForeground(new java.awt.Color(0, 153, 255));
-        tx_f3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        tx_f3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255), 3));
-        tx_f3.setMargin(new java.awt.Insets(20, 20, 20, 20));
-
-        jLabel48.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel48.setForeground(new java.awt.Color(0, 153, 204));
-        jLabel48.setText("(F.3) Masa Maxima Tecnicamente Admisible del conjunto (MMTAC)");
-
-        jLabel49.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel49.setForeground(new java.awt.Color(0, 153, 204));
-        jLabel49.setText("(F.3.1) Masa Maxima Autorizada del conjunto (MMC) ");
-
-        tx_f31.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        tx_f31.setForeground(new java.awt.Color(0, 153, 255));
-        tx_f31.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        tx_f31.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255), 3));
-        tx_f31.setMargin(new java.awt.Insets(20, 20, 20, 20));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 153, 255));
@@ -1076,60 +1025,37 @@ public class CreacionEdidionA4 extends javax.swing.JDialog {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel38, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel45, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel46, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel39, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel41, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel43, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel32, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel40))
+                .addGap(125, 125, 125)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(tx_l0, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tx_l1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tx_l2, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tx_g, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tx_f1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tx_f11, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tx_f2, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tx_f21, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel38, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel45, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel46, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel39, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel44, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel41, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel43, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel32, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel40))
-                        .addGap(146, 146, 146)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(tx_l0, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tx_l1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tx_l2, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tx_g, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tx_f1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tx_f11, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tx_f15, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tx_f2, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tx_f21, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(tx_lnr, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tx_lne))))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel37, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel47, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel42, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 518, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel48, javax.swing.GroupLayout.PREFERRED_SIZE, 518, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel49, javax.swing.GroupLayout.PREFERRED_SIZE, 518, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(105, 105, 105)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tx_f3, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tx_o14, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tx_o13, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tx_o12, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tx_o11, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tx_o1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tx_f31, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(167, Short.MAX_VALUE))
+                        .addComponent(tx_lnr, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tx_lne)))
+                .addContainerGap(199, Short.MAX_VALUE))
         );
 
-        jPanel4Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel32, jLabel33, jLabel35, jLabel37, jLabel38, jLabel39, jLabel41, jLabel43, jLabel44, jLabel45, jLabel46, jLabel47});
+        jPanel4Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel32, jLabel35, jLabel38, jLabel39, jLabel41, jLabel43, jLabel45, jLabel46});
 
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1169,62 +1095,18 @@ public class CreacionEdidionA4 extends javax.swing.JDialog {
                         .addComponent(tx_f11, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(tx_f15, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel44))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(tx_f2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel41))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel43)
                     .addComponent(tx_f21, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel37)
-                    .addComponent(tx_o14, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel33)
-                    .addComponent(tx_o13, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel47)
-                    .addComponent(tx_o12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(tx_o11, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tx_o1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tx_f3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tx_f31, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel42)
-                        .addGap(17, 17, 17)
-                        .addComponent(jLabel34)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel48)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel49)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(245, Short.MAX_VALUE))
         );
 
         jScrollPane5.setViewportView(jPanel4);
 
         blackTabbedPane1.addTab("MASAS", jScrollPane5);
-
-        jLabel50.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel50.setForeground(new java.awt.Color(0, 153, 204));
-        jLabel50.setText("(M.4) DISTANCIA 5a RUEDA (TRACTOCAMION) / KING PIN (SEMIRREMOLQUE) A ULTIMO EJE (mm)");
-
-        tx_m4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        tx_m4.setForeground(new java.awt.Color(0, 153, 255));
-        tx_m4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        tx_m4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255), 3));
-        tx_m4.setMargin(new java.awt.Insets(20, 20, 20, 20));
 
         jLabel51.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel51.setForeground(new java.awt.Color(0, 153, 204));
@@ -1328,13 +1210,9 @@ public class CreacionEdidionA4 extends javax.swing.JDialog {
                         .addGap(18, 18, 18)
                         .addComponent(tx_f8, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel68, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel50, javax.swing.GroupLayout.DEFAULT_SIZE, 683, Short.MAX_VALUE))
+                        .addComponent(jLabel68, javax.swing.GroupLayout.DEFAULT_SIZE, 683, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tx_m4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tx_m1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(tx_m1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(107, 107, 107))
         );
         jPanel5Layout.setVerticalGroup(
@@ -1344,10 +1222,6 @@ public class CreacionEdidionA4 extends javax.swing.JDialog {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel68)
                     .addComponent(tx_m1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel50)
-                    .addComponent(tx_m4, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel51)
@@ -1372,7 +1246,7 @@ public class CreacionEdidionA4 extends javax.swing.JDialog {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel56)
                     .addComponent(tx_f8, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(247, Short.MAX_VALUE))
+                .addContainerGap(290, Short.MAX_VALUE))
         );
 
         jScrollPane6.setViewportView(jPanel5);
@@ -1605,6 +1479,22 @@ public class CreacionEdidionA4 extends javax.swing.JDialog {
         jMetroButton1.setForeground(new java.awt.Color(255, 255, 255));
         jMetroButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/es/zurixconsulting/fichas_a4/numerosMetro/cancel.png"))); // NOI18N
         jMetroButton1.setText("CANCELAR");
+        jMetroButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMetroButton1ActionPerformed(evt);
+            }
+        });
+
+        jMetroButton6.setBackground(new java.awt.Color(0, 153, 255));
+        jMetroButton6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 3));
+        jMetroButton6.setForeground(new java.awt.Color(255, 255, 255));
+        jMetroButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/es/zurixconsulting/fichas_a4/numerosMetro/printer.png"))); // NOI18N
+        jMetroButton6.setText("IMPRIMIR FICHA");
+        jMetroButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMetroButton6ActionPerformed(evt);
+            }
+        });
 
         jMetroButton2.setBackground(new java.awt.Color(0, 153, 255));
         jMetroButton2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 3));
@@ -1617,12 +1507,27 @@ public class CreacionEdidionA4 extends javax.swing.JDialog {
             }
         });
 
+        bt_plantilla.setBackground(new java.awt.Color(0, 153, 255));
+        bt_plantilla.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 3));
+        bt_plantilla.setForeground(new java.awt.Color(255, 255, 255));
+        bt_plantilla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/es/zurixconsulting/fichas_a4/numerosMetro/favs.png"))); // NOI18N
+        bt_plantilla.setText("NO SOY PLANTILLA");
+        bt_plantilla.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_plantillaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(710, Short.MAX_VALUE)
+                .addGap(39, 39, 39)
+                .addComponent(jMetroButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(bt_plantilla, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 342, Short.MAX_VALUE)
                 .addComponent(jMetroButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jMetroButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1644,11 +1549,14 @@ public class CreacionEdidionA4 extends javax.swing.JDialog {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(blackTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 578, Short.MAX_VALUE)
+                .addComponent(blackTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 586, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jMetroButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jMetroButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jMetroButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
+                        .addComponent(jMetroButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(bt_plantilla, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jMetroButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -1675,10 +1583,54 @@ public class CreacionEdidionA4 extends javax.swing.JDialog {
     }//GEN-LAST:event_tx_d1ActionPerformed
 
     private void jMetroButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMetroButton2ActionPerformed
-       this.guardarFicha();
+       try{
+        this.guardarFicha();
        MainUI.bbdd_Fichas.saveDato(this.ficha);
+       
        this.dispose();
+       }catch(Exception e){
+           JOptionPane.showMessageDialog(this, e.getMessage(), "Atencion!!",JOptionPane.ERROR_MESSAGE);
+       }
     }//GEN-LAST:event_jMetroButton2ActionPerformed
+
+    private void jMetroButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMetroButton1ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jMetroButton1ActionPerformed
+
+    private void jMetroButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMetroButton6ActionPerformed
+        // ImpresionFicha print = new ImpresionFicha();
+
+        ImpresionFicha.print(ficha, parent);
+    }//GEN-LAST:event_jMetroButton6ActionPerformed
+
+    private void jMetroButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMetroButton3ActionPerformed
+        final PanelBastidores pb = new PanelBastidores(this);
+        for(Fichatecnica f : MainUI.bbdd_Fichas.getBastidores()){
+            pb.addBst(new BastidorDet(f));
+        }
+        Point p = MouseInfo.getPointerInfo().getLocation();
+        pb.setBounds(p.x,p.y, 350, 300);
+        pb.setVisible(true);
+        
+        
+    }//GEN-LAST:event_jMetroButton3ActionPerformed
+
+    Boolean plantilla = false;
+    private final java.awt.Color AZUL = new java.awt.Color(0,153,255);
+    private final java.awt.Color ROJO = new java.awt.Color(255,51,51);
+    private void bt_plantillaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_plantillaActionPerformed
+        if(plantilla){
+            plantilla = false;
+            this.ficha.setPlantilla(0);
+            this.bt_plantilla.setText("NO SOY PALNTILLA");
+            this.bt_plantilla.setBackground(AZUL);
+        }else{
+            plantilla = true;
+            this.ficha.setPlantilla(1);
+            this.bt_plantilla.setText("SOY PLANTILLA");
+            this.bt_plantilla.setBackground(ROJO);
+        }
+    }//GEN-LAST:event_bt_plantillaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1724,11 +1676,14 @@ public class CreacionEdidionA4 extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private org.matrix.BlackTabbedPane blackTabbedPane1;
     private org.matrix.BlackTabbedPaneUI blackTabbedPaneUI1;
+    private es.zurixconsulting.fichas_a4.JMetroButton bt_plantilla;
     private es.zurixconsulting.utiles.JCBox<Clasificacion1> cb_cl1;
     private es.zurixconsulting.utiles.JCBox<Clasificacion2> cb_cl2;
+    private es.zurixconsulting.utiles.JCBox<String> cb_d2T;
     private es.zurixconsulting.utiles.JCBox<Procedencia> cb_d6;
     private es.zurixconsulting.utiles.JCBox<Categoria> cb_j;
     private es.zurixconsulting.utiles.JCBox<Carroceria> cb_j1;
+    private es.zurixconsulting.utiles.JCBox<String> cb_k;
     private es.zurixconsulting.utiles.JCBox<Combustible> cb_p3;
     private es.zurixconsulting.utiles.JCBox<Color> cb_r;
     private javax.swing.JLabel jLabel1;
@@ -1754,24 +1709,15 @@ public class CreacionEdidionA4 extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel32;
-    private javax.swing.JLabel jLabel33;
-    private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
-    private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
-    private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel43;
-    private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel45;
     private javax.swing.JLabel jLabel46;
-    private javax.swing.JLabel jLabel47;
-    private javax.swing.JLabel jLabel48;
-    private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel51;
     private javax.swing.JLabel jLabel52;
     private javax.swing.JLabel jLabel53;
@@ -1795,6 +1741,8 @@ public class CreacionEdidionA4 extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel9;
     private es.zurixconsulting.fichas_a4.JMetroButton jMetroButton1;
     private es.zurixconsulting.fichas_a4.JMetroButton jMetroButton2;
+    private es.zurixconsulting.fichas_a4.JMetroButton jMetroButton3;
+    private es.zurixconsulting.fichas_a4.JMetroButton jMetroButton6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -1816,18 +1764,14 @@ public class CreacionEdidionA4 extends javax.swing.JDialog {
     private javax.swing.JTextField tx_ci;
     private javax.swing.JTextField tx_cv;
     private javax.swing.JTextField tx_d1;
-    private javax.swing.JTextField tx_d2t;
     private javax.swing.JTextField tx_d2v;
     private javax.swing.JTextField tx_d2vs;
     private javax.swing.JTextField tx_d3;
     private javax.swing.JTextField tx_e;
     private javax.swing.JTextField tx_f1;
     private javax.swing.JTextField tx_f11;
-    private javax.swing.JTextField tx_f15;
     private javax.swing.JTextField tx_f2;
     private javax.swing.JTextField tx_f21;
-    private javax.swing.JTextField tx_f3;
-    private javax.swing.JTextField tx_f31;
     private javax.swing.JTextField tx_f4;
     private javax.swing.JTextField tx_f5;
     private javax.swing.JTextField tx_f6;
@@ -1836,19 +1780,12 @@ public class CreacionEdidionA4 extends javax.swing.JDialog {
     private javax.swing.JTextField tx_f8;
     private org.jdesktop.swingx.JXDatePicker tx_fecha;
     private javax.swing.JTextField tx_g;
-    private javax.swing.JTextField tx_k;
     private javax.swing.JTextField tx_l0;
     private javax.swing.JTextField tx_l1;
     private javax.swing.JTextField tx_l2;
     private javax.swing.JTextField tx_lne;
     private javax.swing.JTextField tx_lnr;
     private javax.swing.JTextField tx_m1;
-    private javax.swing.JTextField tx_m4;
-    private javax.swing.JTextField tx_o1;
-    private javax.swing.JTextField tx_o11;
-    private javax.swing.JTextField tx_o12;
-    private javax.swing.JTextField tx_o13;
-    private javax.swing.JTextField tx_o14;
     private javax.swing.JTextField tx_p1;
     private javax.swing.JTextField tx_p11;
     private javax.swing.JTextField tx_p2;

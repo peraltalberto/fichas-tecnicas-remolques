@@ -1,0 +1,10 @@
+----------------------------------------------------------------
+Thu Feb 07 12:33:28 CET 2013:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.8.2.2 - (1181258): instance a816c00e-013c-b46e-8963-0000006e8498 
+on database directory C:\Users\aperalta\Documents\NetBeansProjects\FichasA4\dist\FTR  with class loader sun.misc.Launcher$AppClassLoader@119298d 
+Loaded from file:/C:/Users/aperalta/Documents/NetBeansProjects/FichasA4/dist/lib/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.7.0_09-b05
+user.dir=C:\Users\aperalta\Documents\NetBeansProjects\FichasA4\dist
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''

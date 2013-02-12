@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 06-feb-2013 17:57:27 by Hibernate Tools 3.2.1.GA -->
+<!-- Generated 11-feb-2013 10:23:00 by Hibernate Tools 3.2.1.GA -->
 <hibernate-mapping>
     <class name="es.zurixconsulting.fichas_a4.persistencia.pojos.Fichatecnica" table="FICHATECNICA" schema="FTR">
         <id name="ncertificado" type="string">
@@ -47,9 +47,6 @@
         <property name="a1" type="string">
             <column name="A1" length="50" />
         </property>
-        <property name="a2" type="string">
-            <column name="A2" length="50" />
-        </property>
         <property name="ciitv" type="string">
             <column name="CIITV" length="50" />
         </property>
@@ -64,12 +61,6 @@
         </property>
         <property name="z" type="string">
             <column name="Z" length="50" />
-        </property>
-        <property name="observaciones" type="string">
-            <column name="OBSERVACIONES" />
-        </property>
-        <property name="opciones" type="string">
-            <column name="OPCIONES" />
         </property>
         <property name="cv" type="string">
             <column name="CV" length="50" />
@@ -179,9 +170,6 @@
         <property name="jcateg" type="string">
             <column name="JCATEG" length="3" />
         </property>
-        <property name="j1" type="string">
-            <column name="J1" length="2" />
-        </property>
         <property name="p3" type="string">
             <column name="P3" length="3" />
         </property>
@@ -199,6 +187,27 @@
         </property>
         <property name="f21" type="string">
             <column name="F21" length="10" />
+        </property>
+        <property name="j1" type="string">
+            <column name="J1" length="4" />
+        </property>
+        <property name="a2" type="string">
+            <column name="A2" />
+        </property>
+        <property name="opciones" type="string">
+            <column name="OPCIONES" length="650" />
+        </property>
+        <property name="observaciones" type="string">
+            <column name="OBSERVACIONES" length="650" />
+        </property>
+        <property name="l1" type="string">
+            <column name="L1" length="5" />
+        </property>
+        <property name="m1" type="string">
+            <column name="M1" length="5" />
+        </property>
+        <property name="plantilla" type="java.lang.Integer">
+            <column name="PLANTILLA" />
         </property>
     </class>
 </hibernate-mapping>

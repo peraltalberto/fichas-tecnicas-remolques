@@ -30,5 +30,8 @@ public class MetroTableUI extends JTableArrayList {
         this.setVisible(true);
     }
     
-}//--> fin clase
+     public boolean isCellEditable(int rowIndex, int colIndex) { 
+         return false;
+     }
+}
 

@@ -34,7 +34,7 @@ public class Carroceria  implements java.io.Serializable {
    
      @Id 
     
-    @Column(name="ID", unique=true, nullable=false, length=2)
+    @Column(name="ID", unique=true, nullable=false, length=4)
     public String getId() {
         return this.id;
     }
@@ -43,7 +43,7 @@ public class Carroceria  implements java.io.Serializable {
         this.id = id;
     }
     
-    @Column(name="DESCRIPCION", length=50)
+    @Column(name="DESCRIPCION", length=255)
     public String getDescripcion() {
         return this.descripcion;
     }
@@ -55,7 +55,7 @@ public class Carroceria  implements java.io.Serializable {
 
 @Override
     public String toString() {
-        return this.descripcion;
+        return this.id+" - "+this.descripcion;
     }
 
 }

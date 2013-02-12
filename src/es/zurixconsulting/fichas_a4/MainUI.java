@@ -7,6 +7,7 @@ package es.zurixconsulting.fichas_a4;
 
 import es.zurixconsulting.fichas_a4.persistencia.models.FichasModel;
 import es.zurixconsulting.fichas_a4.persistencia.pojos.Fichatecnica;
+import es.zurixconsulting.fichas_a4.ImpresionFicha;
 import javax.swing.ImageIcon;
 
 /**
@@ -33,6 +34,9 @@ public class MainUI extends javax.swing.JFrame {
         String[] props = {"fechatarjeta", "ncertificado","nbastidor"};
         this.jTableArrayList2.setCaps(props, cab);
         this.jTableArrayList2.setList(bbdd_Fichas.getLista());
+        
+        this.jTableArrayList3.setCaps(props, cab);
+        this.jTableArrayList3.setList(bbdd_Fichas.getPlantillas());
        
     }
 
@@ -57,6 +61,15 @@ public class MainUI extends javax.swing.JFrame {
         jMetroButton5 = new es.zurixconsulting.fichas_a4.JMetroButton();
         jMetroButton6 = new es.zurixconsulting.fichas_a4.JMetroButton();
         jMetroButton7 = new es.zurixconsulting.fichas_a4.JMetroButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTableArrayList3 = new win8.swing.MetroTableUI();
+        jLabel3 = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
 
         jToggleButton1.setText("jToggleButton1");
 
@@ -93,6 +106,13 @@ public class MainUI extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTableArrayList2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jTableArrayList2.setGridColor(new java.awt.Color(255, 255, 255));
+        jTableArrayList2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableArrayList2MouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(jTableArrayList2);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
@@ -154,6 +174,32 @@ public class MainUI extends javax.swing.JFrame {
             }
         });
 
+        jScrollPane3.setBorder(null);
+
+        jTableArrayList3.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jTableArrayList3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jTableArrayList3.setGridColor(new java.awt.Color(255, 255, 255));
+        jTableArrayList3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableArrayList3MouseClicked(evt);
+            }
+        });
+        jScrollPane3.setViewportView(jTableArrayList3);
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("PLANTILLAS: ");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -161,6 +207,9 @@ public class MainUI extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -184,7 +233,8 @@ public class MainUI extends javax.swing.JFrame {
                                         .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 607, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(jMetroButton7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 24, Short.MAX_VALUE)))
+                                .addGap(0, 24, Short.MAX_VALUE))
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING))
                         .addGap(39, 39, 39))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -199,15 +249,72 @@ public class MainUI extends javax.swing.JFrame {
                     .addComponent(jMetroButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
-                .addGap(21, 21, 21)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(9, 9, 9)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jMetroButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jMetroButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
-                    .addComponent(jMetroButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
-                    .addComponent(jMetroButton6, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE))
+                    .addComponent(jMetroButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jMetroButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
+
+        jMenuBar1.setBackground(new java.awt.Color(0, 153, 255));
+        jMenuBar1.setBorder(null);
+        jMenuBar1.setForeground(new java.awt.Color(255, 255, 255));
+
+        jMenu1.setBackground(new java.awt.Color(0, 153, 255));
+        jMenu1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
+        jMenu1.setForeground(new java.awt.Color(255, 255, 255));
+        jMenu1.setText("Archivo");
+        jMenu1.setAutoscrolls(true);
+
+        jMenuItem2.setBackground(new java.awt.Color(0, 153, 255));
+        jMenuItem2.setForeground(new java.awt.Color(255, 255, 255));
+        jMenuItem2.setText("Nueva Ficha");
+        jMenuItem2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem2);
+
+        jMenuItem1.setBackground(new java.awt.Color(0, 153, 255));
+        jMenuItem1.setForeground(new java.awt.Color(255, 255, 255));
+        jMenuItem1.setText("Salir");
+        jMenuItem1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
+        jMenu2.setForeground(new java.awt.Color(255, 255, 255));
+        jMenu2.setText("Ayuda");
+
+        jMenuItem3.setBackground(new java.awt.Color(0, 153, 255));
+        jMenuItem3.setForeground(new java.awt.Color(255, 255, 255));
+        jMenuItem3.setText("Acerca de...");
+        jMenuItem3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem3);
+
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -217,7 +324,9 @@ public class MainUI extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 2, Short.MAX_VALUE))
         );
 
         pack();
@@ -226,11 +335,13 @@ public class MainUI extends javax.swing.JFrame {
     private void jMetroButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMetroButton3ActionPerformed
         new CreacionEdidionA4(this,true);
         this.jTableArrayList2.setList(bbdd_Fichas.getLista());
+        this.jTableArrayList3.setList(bbdd_Fichas.getPlantillas());
     }//GEN-LAST:event_jMetroButton3ActionPerformed
 
     private void jMetroButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMetroButton4ActionPerformed
         new CreacionEdidionA4((Fichatecnica)this.jTableArrayList2.getSelectElement(),this,true);
         this.jTableArrayList2.setList(bbdd_Fichas.getLista());
+       this.jTableArrayList3.setList(bbdd_Fichas.getPlantillas());
     }//GEN-LAST:event_jMetroButton4ActionPerformed
 
     private void jMetroButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMetroButton5ActionPerformed
@@ -247,8 +358,40 @@ public class MainUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jMetroButton7ActionPerformed
 
     private void jMetroButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMetroButton6ActionPerformed
-        ImpresionFicha.print((Fichatecnica)this.jTableArrayList2.getSelectElement(), this);
+      // ImpresionFicha print = new ImpresionFicha();
+        
+         ImpresionFicha.print((Fichatecnica)this.jTableArrayList2.getSelectElement(), this);
     }//GEN-LAST:event_jMetroButton6ActionPerformed
+
+    private void jTableArrayList2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableArrayList2MouseClicked
+       if(evt.getClickCount()>=2){
+            new CreacionEdidionA4((Fichatecnica)this.jTableArrayList2.getSelectElement(),this,true);
+            this.jTableArrayList2.setList(bbdd_Fichas.getLista());
+            this.jTableArrayList3.setList(bbdd_Fichas.getPlantillas());
+       }
+    }//GEN-LAST:event_jTableArrayList2MouseClicked
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+       System.exit(0);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        new CreacionEdidionA4(this,true);
+        this.jTableArrayList2.setList(bbdd_Fichas.getLista());
+        this.jTableArrayList3.setList(bbdd_Fichas.getPlantillas());
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        new QuienesSomos(this, true).setVisible(true);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jTableArrayList3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableArrayList3MouseClicked
+        if(evt.getClickCount()>=2){
+            new CreacionEdidionA4((Fichatecnica)this.jTableArrayList3.getSelectElement(),this,true,true);
+            this.jTableArrayList2.setList(bbdd_Fichas.getLista());
+            this.jTableArrayList3.setList(bbdd_Fichas.getPlantillas());
+       }
+    }//GEN-LAST:event_jTableArrayList3MouseClicked
 
     /**
      * @param args the command line arguments
@@ -287,6 +430,13 @@ public class MainUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private es.zurixconsulting.fichas_a4.JMetroButton jMetroButton3;
     private es.zurixconsulting.fichas_a4.JMetroButton jMetroButton4;
     private es.zurixconsulting.fichas_a4.JMetroButton jMetroButton5;
@@ -294,7 +444,9 @@ public class MainUI extends javax.swing.JFrame {
     private es.zurixconsulting.fichas_a4.JMetroButton jMetroButton7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private es.timmp.componets.JTableArrayList jTableArrayList2;
+    private es.timmp.componets.JTableArrayList jTableArrayList3;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JToggleButton jToggleButton1;
     // End of variables declaration//GEN-END:variables
