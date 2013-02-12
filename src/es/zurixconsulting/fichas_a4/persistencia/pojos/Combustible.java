@@ -54,7 +54,7 @@ public class Combustible  implements java.io.Serializable {
 
 @Override
     public String toString() {
-        return this.descripcion;
+        return this.id+" - "+this.descripcion;
     }
 
 

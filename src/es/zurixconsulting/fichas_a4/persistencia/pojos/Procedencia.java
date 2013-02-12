@@ -55,7 +55,7 @@ public class Procedencia  implements java.io.Serializable {
 
 @Override
     public String toString() {
-        return this.descricpion;
+        return this.id+" - "+this.descricpion;
     }
 
 }

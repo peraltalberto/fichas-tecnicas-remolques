@@ -55,7 +55,7 @@ public class Color  implements java.io.Serializable {
 
 @Override
     public String toString() {
-        return this.descripcion;
+        return this.id+" - "+this.descripcion;
     }
 
 }
